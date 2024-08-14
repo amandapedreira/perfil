@@ -2,43 +2,42 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+IT+Moderna:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
-
-
 /* Variaveis das Cores */
 /* TEMA DARK */
 :root, :root[data-theme='dark'] {
     --primary-color: #f0f0f0;  /*cor principal Textos*/
-    --primary-bg-color: #171511;  /*cor principal Fundo*/ 
+    --primary-bg-color: #240e4f;  /*cor principal Fundo*/ 
     /* bg = background == cor do Fundo */
-    --secondary-bg-color: #56575A;
-    --title-color: #f0f0f0;
-    --text-color: #8f8f8f;
+    --secondary-bg-color: #28292E;  
+    --primary-border-color: #28292E;
+    --secondary-border-color: #56575A;
+    --title-color: #F0F0F0;
+    
     --link-color: #8f8f8f;
-    --link-hover: #f0f0f0;
-    --icon-color: #c7c8c9;
-}
+    --link-hover: #F0F0F0;
 
+    --icon-color: #C7C8C9;
+}
 /* TEMA LIGHT */
 :root[data-theme='light'] {
-    --primary-color: #000; /* cor principal textos */
+    --primary-color: #0d0c09; /* cor principal textos */
 
     --primary-bg-color: #f0f2f5;
-    --secondary-bg-color: #c7c8c9;
+    --secondary-bg-color: #C7C8C9;
 
-    --primary-border-color: #c7c8c9;
-    --secondary-border-color: #9a9a9c;
+    --primary-border-color: #C7C8C9;
+	--secondary-border-color: #9A9A9C;
 
-
-    --title-color: #0b0b0f;
-    --text-color: #a3a2a2;
-    --link-color: #0b0b0f;
-    --icon-color: #56575a;
+	--title-color: #0B0B0F;
+	--link-hover: #a3a2a2;
+	--link-color: #0B0B0F;
+	--icon-color: #56575A;
 }
 
 /* Reset CSS */
-*{
-    margin: 0;
-    padding: 0;
+* {
+    margin: 0; /*margem */
+    padding: 0px; /* preenchimento */
     box-sizing: border-box;
     vertical-align: baseline;
     list-style: none;
@@ -52,74 +51,117 @@ body {
     font-family: 'Playwrite', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-a{
+a {
     text-decoration: none;
     color: var(--link-color);
 }
 
-a:hover{
+a:hover {
     color: var(--link-hover);
 }
 
-i{
-    color: var(--icon-color);
+i {
+   color: var(--icon-color); 
 }
 
-.header{
+.header {
     display: flex;
     flex-flow: row wrap;
+    /* Coloca o conteúdo em linha e permite a quebra de linha. */
     justify-content: space-between;
-    /* Os itens dentro do conateiner flexívek=l serão distribuídos de maneira uniforme ao longo do eixo principal, com espaços iguais entre eles */
+    /* Os itens dentro do container flexível serão distribuídos de maneira uniforme ao longo do eixo principal, com espaços iguais entre eles.  */
     align-items: center;
     width: 100%;
     padding: 0.5rem 1rem;
-    z-index: 2;
+    z-index: 2;/*sobreposição*/
 }
-
+   
 .header-logo .logo{
     width: 3.25rem;
     height: 3.25rem;
 }
 
-#toggleTheme{
-    font-size: 1.5rem;
+#toggleTheme {
+    font-size: 1.5rem; 
     color: var(--icon-color);
     cursor: pointer;
-    transition: ease-in-out;
+    transition: ease-in-out .4s;
 }
 
-.menu{
+.menu {
     display: flex;
-    /* Torna o elemento um Flex container */
+    /* Torna o Elemento um Flex container automaticamente transformando todos os filhos diretos em Flex Itens  */
     align-items: center;
     background: var(--primary-bg-color);
+    gap: 1rem;
+} 
+
+.menu-link {
+    display: flex;
+    align-items: center;
     gap: .5rem;
 }
 
-.menu-mobile{
+.menu-mobile {   /* UL */
     width: 100%;
     position: fixed;
     bottom: 0;
     justify-content: space-between;
-    border-top: 1px var(--primary-border-color) solid;
+    border-top: 1px solid var(--primary-border-color);
 }
 
-.menu-mobile .menu-link{
+.menu-mobile .menu-link {
     flex-direction: column;
     justify-content: center;
     padding: .5rem 1rem;
 }
 
-.menu-link.active .menu-icon, .menu-link.active .menu-text, .menu-link:hover .menu-icon, .menu-link:hover .menu-text{
+.menu-link.active .menu-icon,
+.menu-link.active .menu-text,
+.menu-link:hover .menu-icon,
+.menu-link:hover .menu-text {
     color: var(--link-hover);
 }
 
-.menu-icon, .menu-text{
+.menu-icon, .menu-text {
     color: var(--link-color);
     font-weight: 600;
 }
 
-.menu-icon{
+.menu-icon {
     font-size: 1.5rem;
 }
 
+.menu-text{
+   font-size: .75rem;
+   text-transform: uppercase; 
+}
+
+.header-nav{
+    display: none;
+}
+
+.menu-principal{
+    gap: 1rem;
+}
+
+
+
+/* --------------------------------------------------- */
+
+/* CSS Responsivo */
+@media (min-width: 768px){
+    .header{
+        position: fixed;
+        border-bottom: 1px solid var(--primary-border-color);
+        padding: 1rem 6rem;
+    }
+
+    .nav-mobile{
+        display: none;
+    }
+
+    .header-nav{
+        display: flex;
+    }
+}
